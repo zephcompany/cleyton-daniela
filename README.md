@@ -1,6 +1,7 @@
 # Consultoria Online de Saúde Mental e Alta Performance Feminina
 
-Landing page publicada em https://danielaterapeuta.com
+Landing page publicada em https://danieladamasceno.com.br
+(o domínio danielaterapeuta.com redireciona para ele; os dois apontam para a mesma hospedagem na Hostinger)
 
 Site estático (HTML + imagens).
 
@@ -11,7 +12,7 @@ Site estático (HTML + imagens).
 ## Deploy
 
 Cada envio para a branch `main` vai para o ar sozinho:
-o webhook do GitHub chama `https://danielaterapeuta.com/deploy.php`,
+o webhook do GitHub chama `https://danieladamasceno.com.br/deploy.php`,
 que baixa a `main` deste repositório (público) e atualiza os arquivos na Hostinger.
 
 Leva poucos segundos. Para forçar uma atualização sem enviar nada, use **Redeliver** na última entrega em
