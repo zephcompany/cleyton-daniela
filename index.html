@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultoria Online de Saúde Mental e Alta Performance Feminina</title>
+<meta name="description" content="Sessões de terapia online para fortalecer sua autoestima, desenvolver sua confiança e voltar a ocupar o lugar que merece na própria vida.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23A64D69' d='M12 21S3 15.500 3 9a4.500 4.500 0 0 1 9-1 4.500 4.500 0 0 1 9 1c0 6.500-9 12-9 12Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Montserrat:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (edite cores aqui) ============ */
+:root{
+  --blush:#F8E7E5; --champ:#FFF7F0; --rose:#C46A83; --plum:#65243D; --burnt:#A64D69;
+  --wine:#8C3654; --gold:#D8B36A; --text:#493039; --muted:#7a5d67;
+  --line:rgba(101,36,61,.12);
+  --btn-grad:linear-gradient(100deg,#C46A83 0%,#a94c6b 55%,#8C3654 100%);
+  --gold-grad:linear-gradient(100deg,#c79a4c,#ecd29a 45%,#D8B36A 70%,#b98a3e);
+  --radius:22px; --container:1200px;
+  --serif:"Playfair Display",Georgia,serif; --script:"Cormorant Garamond",Georgia,serif; --sans:"Montserrat",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--text);background:var(--blush);font-size:17px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);color:var(--plum);font-style:italic;font-weight:600;letter-spacing:-.02em;line-height:1.06;text-wrap:balance}
+h1 em,h2 em,h3 em{color:var(--burnt);font-style:italic}
+p,li{text-wrap:pretty}
+.wrap{max-width:var(--container);margin-inline:auto;padding-inline:24px}
+section{position:relative;padding-block:clamp(72px,10vw,140px);overflow-x:clip}
+html,body{max-width:100%;overflow-x:clip}
+.eyebrow{display:flex;align-items:center;gap:14px;font:700 12px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--burnt);margin-bottom:18px}
+.eyebrow::after{content:"";height:1px;width:64px;background:var(--gold)}
+.eyebrow.c{justify-content:center}.eyebrow.c::before{content:"";height:1px;width:64px;background:var(--gold)}
+.h2{font-size:clamp(30px,4.4vw,50px)}
+.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.45}
+.script{font-family:var(--script);font-style:italic;font-weight:600;color:var(--burnt);line-height:1.12;letter-spacing:-.01em}
+.center{text-align:center}
+.underline{display:block;width:210px;height:12px;margin-top:10px;color:var(--gold)}
+.center .underline{margin-inline:auto}
+
+/* ============ BOTÃO (seta preenchendo) ============ */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;min-height:74px;padding:14px 92px 14px 36px;border-radius:999px;background:var(--btn-grad);color:#fff;font:700 15px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28),0 18px 40px -14px rgba(140,54,84,.65);transition:transform .3s,box-shadow .3s}
+.btn__t{position:relative;z-index:2;transition:color .45s}
+.btn .arw{position:absolute;z-index:1;right:9px;top:50%;translate:0 -50%;width:56px;height:56px;border-radius:999px;background:var(--champ);transition:width .5s cubic-bezier(.65,0,.35,1)}
+.btn .arw svg{position:absolute;right:18px;top:50%;translate:0 -50%;width:20px;height:20px;color:var(--wine);transition:transform .4s}
+.btn:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28),0 24px 48px -14px rgba(140,54,84,.75)}
+.btn:hover .arw{width:calc(100% - 18px)}.btn:hover .btn__t{color:var(--plum)}.btn:hover .arw svg{transform:rotate(-45deg)}
+.selo{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.02em}
+.selo svg{width:14px;height:14px;color:var(--burnt)}
+.center .selo{justify-content:center}
+.cta{margin-top:34px}
+
+/* ============ ENTRADAS ============ */
+.rv{opacity:0;filter:blur(7px);transform:translateY(46px);transition:opacity .7s ease,filter .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;filter:blur(0);transform:none}
+@keyframes entra{from{opacity:0;filter:blur(7px);transform:translateY(40px)}to{opacity:1;filter:blur(0);transform:none}}
+.hero .rv{opacity:1;filter:none;transform:none;animation:entra .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .rv.d1{animation-delay:.12s}.hero .rv.d2{animation-delay:.24s}.hero .rv.d3{animation-delay:.36s}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}.d5{transition-delay:.6s}
+/* Texto revelando de entrada (Zeph Codes): cada linha anima separada */
+.ze{--cor-faixa:var(--rose);--duracao:600ms;--atraso-faixa:500ms;--intervalo-linhas:200ms;--curva:cubic-bezier(.165,.84,.44,1)}
+.vinho .ze{--cor-faixa:#f3d9a4}
+.zeph-entrada__linha{display:block;position:relative;width:fit-content;max-width:100%;white-space:nowrap;padding:.14em .08em .26em 0;margin:-.14em -.08em -.26em 0}
+.ze.zc .zeph-entrada__linha{margin-inline:auto;padding-inline:.08em}
+.ze.is-pronto .zeph-entrada__linha{clip-path:inset(0 100% 0 0)}
+.ze.is-pronto .zeph-entrada__linha::after{content:"";position:absolute;inset:.06em 0 .14em;border-radius:2px;background:var(--cor-faixa);transform-origin:right center;pointer-events:none}
+.ze.is-visivel .zeph-entrada__linha{animation:zeph-entrada-revelar var(--duracao) var(--curva) both;animation-delay:calc(var(--linha,0)*var(--intervalo-linhas))}
+.ze.is-visivel .zeph-entrada__linha::after{animation:zeph-entrada-faixa var(--duracao) var(--curva) both;animation-delay:calc(var(--atraso-faixa) + var(--linha,0)*var(--intervalo-linhas))}
+@keyframes zeph-entrada-revelar{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes zeph-entrada-faixa{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;filter:none;transform:none;transition:none}.ze.is-pronto .zeph-entrada__linha{clip-path:none;animation:none}.ze.is-pronto .zeph-entrada__linha::after{display:none}.faixa__trilho,.selo7 *,.btn,.luzes::before,.luzes::after,.tracado::before{animation:none!important}}
+
+/* ============ ORNAMENTOS ============ */
+.flor{position:absolute;pointer-events:none;mix-blend-mode:multiply;z-index:0;width:clamp(170px,26vw,400px)}
+.flor.tr{top:-10px;right:-30px;transform:scaleX(-1)}
+.flor.bl{bottom:-10px;left:-30px;transform:scaleY(-1)}
+.flor.br{bottom:-10px;right:-30px;transform:scale(-1,-1)}
+.flor.tl{top:-10px;left:-30px}
+.ramo{position:absolute;pointer-events:none;color:var(--gold);opacity:.75;width:clamp(90px,12vw,170px);z-index:0}
+.wrap{position:relative;z-index:1}
+
+/* ============ HERO ============ */
+.hero{padding:0;min-height:min(820px,100svh);display:flex;align-items:center;background:radial-gradient(90% 120% at 0% 0%,#fff3ee 0%,var(--blush) 55%,#f1d5d3 100%)}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(248,231,229,.96) 0%,rgba(248,231,229,.86) 34%,rgba(248,231,229,0) 62%)}
+.hero .wrap{width:100%;z-index:2;padding-block:44px 150px}
+.logo{display:flex;align-items:center;gap:14px;margin-bottom:clamp(36px,6vw,64px)}
+.logo svg{width:52px;height:52px;color:var(--burnt);flex:none}
+.logo b{display:block;font:600 19px/1.1 var(--serif);color:var(--plum);letter-spacing:-.01em}
+.logo span{display:block;font:italic 500 13px/1.3 var(--sans);color:var(--plum);margin-top:3px}
+.logo i{width:1px;height:46px;background:var(--plum);opacity:.35}
+.hero__txt{max-width:610px}
+.hero h1{font-size:clamp(33px,4.5vw,58px);line-height:1.04}
+.hero .lead{margin-top:22px;max-width:540px}
+.hero .lead + .lead{margin-top:14px;font-weight:500;color:var(--plum)}
+
+/* faixa de benefícios */
+.benef{position:relative;z-index:3;margin-top:-92px;padding:0}
+.benef__card{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,247,240,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(216,179,106,.55);border-radius:var(--radius);box-shadow:0 30px 60px -40px rgba(101,36,61,.45)}
+.benef__i{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:28px 18px;font-weight:500;font-size:16px;line-height:1.25;color:var(--plum);position:relative;min-width:0}
+.benef__i + .benef__i::before{content:"";position:absolute;left:0;top:26%;bottom:26%;width:1px;background:var(--line)}
+.benef__i svg{width:38px;height:38px;color:var(--burnt)}
+
+/* ============ IMAGINE ============ */
+.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(36px,6vw,90px);align-items:center}
+.arco{position:relative;border-radius:999px 999px var(--radius) var(--radius);overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,#f3d3d2,#e4b3bd);box-shadow:0 0 0 1px var(--gold),0 0 0 10px var(--champ),0 0 0 11px rgba(216,179,106,.5),0 40px 70px -40px rgba(101,36,61,.5)}
+.arco img{width:100%;height:100%;object-fit:cover}
+.linhas{list-style:none;margin-top:26px;border-top:1px solid var(--line)}
+.linhas li{display:flex;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-weight:500}
+.linhas li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 4px rgba(196,106,131,.18)}
+.fala{font-size:clamp(34px,4.6vw,56px);margin:30px 0 8px}
+.bloco p + p{margin-top:14px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+.tags span{padding:10px 20px;border-radius:999px;border:1px solid rgba(216,179,106,.7);background:var(--champ);font:italic 600 21px/1 var(--script);color:var(--plum)}
+.fill{font:italic 600 clamp(28px,3.8vw,46px)/1.12 var(--serif);color:var(--plum);letter-spacing:-.02em;max-width:900px;margin:clamp(56px,8vw,96px) auto 0;text-align:center}
+.fill .w{opacity:.16;transition:opacity .35s}.fill .w.on{opacity:1}
+
+/* ============ DESCOBERTA ============ */
+.painel{background:var(--champ);border-radius:34px;border:1px solid rgba(216,179,106,.5);padding:clamp(36px,6vw,84px);position:relative;overflow:hidden}
+.painel__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.destaque{font-size:clamp(27px,3.2vw,38px);margin:22px 0}
+.pode{list-style:none;display:grid;gap:14px}
+.pode li{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-radius:18px;background:#fff;border:1px solid var(--line);font-weight:500;transition:transform .3s,border-color .3s,background .3s}
+.pode li:hover{transform:translateY(-4px);border-color:rgba(196,106,131,.5);background:#fffdfb}
+.pode svg{flex:none;width:26px;height:26px;color:var(--burnt);margin-top:1px}
+.pode li.fim{background:var(--btn-grad);color:#fff;border:0;font:italic 600 24px/1.15 var(--serif);justify-content:center;text-align:center}
+
+/* ============ CONSULTORIA ============ */
+.consult{background:linear-gradient(180deg,var(--blush),#fbeeec)}
+.consult .split{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+.circ{position:relative;aspect-ratio:1;border-radius:50%;overflow:hidden;background:linear-gradient(160deg,#f3d3d2,#e4b3bd);box-shadow:0 0 0 1px var(--gold),0 0 0 10px var(--champ),0 0 0 11px rgba(216,179,106,.5),0 40px 70px -40px rgba(101,36,61,.5)}
+.circ img{width:100%;height:100%;object-fit:cover}
+.checks{list-style:none;margin-top:8px}
+.passos{margin-top:clamp(56px,8vw,96px)}
+.passos__h{font-size:clamp(26px,3.2vw,38px);margin-bottom:26px}
+.passo{display:grid;grid-template-columns:70px minmax(0,.9fr) minmax(0,1.1fr);gap:24px;align-items:baseline;padding:28px 0;border-top:1px solid var(--line)}
+.passo:last-of-type{border-bottom:1px solid var(--line)}
+.passo__n{font:italic 600 26px/1 var(--script);color:var(--gold)}
+.passo h3{font-size:clamp(22px,2.3vw,28px);line-height:1.12}
+.passo p + p{margin-top:10px}
+.manifesto{margin-top:44px;text-align:center;font-size:clamp(26px,3.2vw,38px);max-width:860px;margin-inline:auto}
+
+/* ============ TRANSFORMAÇÃO (vinho) ============ */
+.vinho{background:radial-gradient(120% 130% at 0% 0%,#a64d69 0%,var(--wine) 45%,#6f2843 100%);color:#fbe9ea;border-radius:44px 44px 0 0}
+.vinho h2{color:#fff}.vinho h2 em{color:#f3d9a4}
+.vinho .eyebrow{color:#f3d9a4}
+.divisor{position:absolute;left:0;right:0;top:0;height:0;z-index:3}
+.divisor__curva{position:absolute;left:50%;top:-1px;translate:-50% 0;width:130px;height:38px;fill:#fbeeec}
+.divisor__selo{position:absolute;left:50%;top:9px;translate:-50% -50%;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--btn-grad);box-shadow:0 0 0 5px rgba(196,106,131,.16),0 0 0 1px var(--gold) inset,0 8px 22px rgba(101,36,61,.35)}
+@media (min-width:900px){.divisor{scale:1.5}}
+.grade6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px}
+.cardv{padding:30px 28px;border-radius:var(--radius);background:radial-gradient(130% 150% at 0% 0%,rgba(255,237,199,.16),rgba(255,237,199,.03) 70%);position:relative;font-weight:500;font-size:18px;line-height:1.35;transition:transform .3s,background-color .3s}
+.cardv::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:radial-gradient(140% 140% at 0% 0%,#f3d9a4,rgba(216,179,106,.15) 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cardv:hover{transform:translateY(-5px);background-color:rgba(255,255,255,.05)}
+.cardv svg{width:38px;height:38px;color:#f3d9a4;margin-bottom:18px}
+.vinho__fim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);margin-top:56px;align-items:center}
+.vinho__fim .script{color:#f3d9a4;font-size:clamp(30px,4vw,48px)}
+
+/* ============ PARA VOCÊ ============ */
+.para{background:var(--champ)}
+.grade3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:44px;text-align:left}
+.cardp{padding:32px 30px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);font-weight:500;transition:transform .3s,border-color .3s,background .3s}
+.cardp:hover{transform:translateY(-5px);border-color:rgba(196,106,131,.5);background:#fffdfb}
+.tile{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--btn-grad);color:#fff;margin-bottom:20px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.tile svg{width:26px;height:26px}
+
+/* ============ OFERTA ============ */
+.oferta__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(32px,5vw,72px);align-items:center}
+.preco{background:linear-gradient(180deg,#fffaf6,#fff1ec);border-radius:30px;padding:clamp(54px,5vw,64px) clamp(26px,4vw,48px) clamp(34px,4vw,48px);text-align:center;position:relative;box-shadow:0 0 0 1.5px var(--gold),0 50px 80px -50px rgba(101,36,61,.55)}
+.preco__tag{position:absolute;top:0;left:50%;translate:-50% -50%;padding:11px 26px;border-radius:999px;background:var(--gold-grad);font:700 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--plum);white-space:nowrap}
+.preco__nome{font:italic 600 21px/1.2 var(--serif);color:var(--plum);max-width:330px;margin-inline:auto}
+.preco__cond{font:700 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--burnt);margin:26px 0 10px}
+.preco__valor{font:600 28px/1 var(--serif);color:var(--plum);display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap}
+.preco__valor b{font:700 clamp(62px,8vw,88px)/.9 var(--serif);letter-spacing:-.03em;background:linear-gradient(100deg,#8C3654,#65243D);-webkit-background-clip:text;background-clip:text;color:transparent}
+.preco__avista{margin-top:10px;font-weight:500;font-size:19px;color:var(--plum)}
+.preco .btn{margin-top:28px}
+
+/* ============ BÔNUS ============ */
+.bonus{background:var(--champ)}
+.bonus__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:44px}
+.cardb{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:26px;align-items:center;padding:18px;border-radius:26px;background:#fff;border:1px solid rgba(196,106,131,.45);text-align:left;transition:transform .3s,border-color .3s}
+.cardb:hover{transform:translateY(-5px);border-color:var(--rose)}
+.cardb__img{aspect-ratio:1;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#f3d3d2,#e4b3bd)}
+.cardb__img img{width:100%;height:100%;object-fit:cover}
+.pill{display:inline-block;padding:7px 16px;border-radius:999px;background:var(--btn-grad);color:#fff;font:700 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+.cardb h3{font-size:clamp(26px,2.8vw,34px);color:var(--burnt)}
+.cardb h4{font:700 16px/1.3 var(--sans);color:var(--plum);margin:10px 0 8px}
+.cardb p{font-size:15.5px}
+
+/* ============ GARANTIA ============ */
+.gar__grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(28px,5vw,70px);align-items:center;max-width:960px;margin-inline:auto}
+
+.gar p{margin-top:16px}.gar p.obs{font-size:15px;color:var(--muted)}
+
+/* ============ ENCERRAMENTO ============ */
+.fim{background:radial-gradient(90% 100% at 50% 0%,#fff3ee,var(--blush) 60%,#f3d7d6);overflow:hidden;padding-bottom:clamp(90px,12vw,160px)}
+.fim__col{max-width:780px;margin-inline:auto;text-align:center}
+.fim h2 + h2{margin-top:10px}
+.poder{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:34px 0}
+.poder li{padding:12px 22px;border-radius:999px;background:var(--champ);border:1px solid rgba(216,179,106,.7);font-weight:500;font-size:16px;color:var(--plum)}
+.fim p + p{margin-top:14px}
+.papeis{font-size:clamp(26px,3.4vw,40px);margin:34px 0 26px}
+.amor{font-size:clamp(30px,4vw,46px);margin:26px 0}
+.fim__h{font-size:clamp(28px,3.9vw,46px);margin-top:44px}
+.coracao{width:120px;margin:34px auto 0;color:var(--rose)}
+.fim__preco{margin-top:18px;font-weight:700;color:var(--plum);font-size:18px}
+.fim__obs{margin-top:14px;font-size:13px;color:var(--muted);max-width:480px;margin-inline:auto}
+
+footer{background:var(--plum);color:#e9cfd6;padding:26px 0;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer a.credito{padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.25)}
+
+/* ============ EFEITOS ZEPH CODES ============ */
+/* Botão pulse */
+.btn{animation:pisca 2.4s infinite}
+@keyframes pisca{0%{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28),0 18px 40px -14px rgba(140,54,84,.65),0 0 0 0 rgba(196,106,131,.5)}70%{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28),0 18px 40px -14px rgba(140,54,84,.65),0 0 0 20px rgba(196,106,131,0)}100%{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.28),0 18px 40px -14px rgba(140,54,84,.65),0 0 0 0 rgba(196,106,131,0)}}
+.btn:hover{animation:none}
+/* Traçado animado (card de preço) */
+.tracado{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.tracado::before{content:"";position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,rgba(196,106,131,0) 0%,rgba(196,106,131,.1) 15%,#8C3654 50%,rgba(196,106,131,.1) 85%,rgba(196,106,131,0) 100%);animation:scanLineMove 3.6s linear infinite}
+@keyframes scanLineMove{0%{transform:translateX(-100%);opacity:0}10%,90%{opacity:1}100%{transform:translateX(100%);opacity:0}}
+/* Luz piscando em 2 pontos (seção vinho) */
+.luzes{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.luzes::before,.luzes::after{content:"";position:absolute;border-radius:100%;filter:blur(120px);mix-blend-mode:screen;opacity:0;animation:luz 6s infinite}
+.luzes::before{top:6%;right:calc(50% - 720px);width:460px;height:520px;background:#f3d9a4}
+.luzes::after{top:58%;left:calc(50% - 760px);width:520px;height:420px;background:#e58aa6;animation-delay:2.5s}
+@keyframes luz{0%,100%{opacity:0}50%{opacity:.42}}
+/* Faixa animada (duas faixas cruzadas, sentidos opostos) */
+.faixa{position:relative;height:150px;overflow-x:clip;z-index:4;margin-block:-40px;pointer-events:none}
+.faixa__f{position:absolute;left:-5%;width:110%;top:50%;padding:15px 0;white-space:nowrap;overflow:hidden}
+.faixa__f.f1{background:linear-gradient(270deg,#C46A83,#8C3654);color:#fff;transform:translateY(-50%) rotate(-2.2deg);box-shadow:0 14px 40px -18px rgba(101,36,61,.6)}
+.faixa__f.f2{background:var(--champ);color:var(--plum);transform:translateY(-50%) rotate(2.2deg);box-shadow:0 0 0 1px rgba(216,179,106,.6)}
+.faixa__trilho{display:inline-flex;gap:26px;align-items:center;font:italic 600 21px/1 var(--serif);animation:txt 46s linear infinite;will-change:transform}
+.faixa__f.f2 .faixa__trilho{animation-name:txto}
+.faixa__trilho svg{width:16px;height:16px;flex:none;color:var(--gold)}
+@keyframes txt{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes txto{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+/* Linha do tempo que se move no scroll (barra) */
+.passos__lista{position:relative;padding-left:46px}
+.trilho{position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--line);border-radius:2px}
+.trilho i{position:absolute;left:0;top:0;width:100%;height:calc(var(--p,0)*100%);background:linear-gradient(#C46A83,#D8B36A);border-radius:2px}
+.trilho b{position:absolute;left:50%;top:calc(var(--p,0)*100%);translate:-50% -50%;width:26px;height:26px;border-radius:50%;background:var(--champ);box-shadow:0 0 0 1px var(--gold),0 0 0 6px rgba(216,179,106,.18),0 8px 18px -6px rgba(101,36,61,.4);display:grid;place-items:center;color:var(--burnt)}
+.trilho b svg{width:13px;height:13px}
+/* Texto preenchendo conforme o scroll: palavra sobe ao acender */
+.fill .w{display:inline-block;transform:translateY(14px);transition:opacity .45s,transform .55s cubic-bezier(.2,.7,.2,1)}
+.fill .w.on{transform:none}
+/* Selo 7 dias animado */
+.selo7{position:relative;width:260px;aspect-ratio:1;flex:none}
+.selo7::before{content:"";position:absolute;inset:14%;border-radius:50%;animation:halo 2.8s infinite}
+@keyframes halo{0%{box-shadow:0 0 0 0 rgba(216,179,106,.55)}70%{box-shadow:0 0 0 46px rgba(216,179,106,0)}100%{box-shadow:0 0 0 0 rgba(216,179,106,0)}}
+.selo7 svg{position:relative;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 26px 28px rgba(101,36,61,.32))}
+.selo7 #fora,.selo7 #dentro{transform-box:view-box;transform-origin:150px 150px}
+.selo7 #fora{animation:loading 36s linear infinite}
+.selo7 #dentro{animation:load 16s linear infinite}
+@keyframes loading{to{transform:rotate(360deg)}}
+@keyframes load{to{transform:rotate(-360deg)}}
+.selo7 .brilho{animation:brilho 4.6s cubic-bezier(.6,0,.3,1) infinite}
+@keyframes brilho{0%,55%{transform:translateX(-140px) skewX(-18deg)}100%{transform:translateX(420px) skewX(-18deg)}}
+.selo7 .num{transform-box:view-box;transform-origin:150px 150px;animation:respira 3.2s ease-in-out infinite}
+@keyframes respira{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+
+/* ============ MOBILE ============ */
+@media (max-width:900px){
+  body{font-size:16px}
+  .hero{display:block;min-height:0;background:var(--blush)}
+  .hero__bg{position:relative;inset:auto;height:108vw;max-height:520px;object-position:78% 20%;-webkit-mask:linear-gradient(#000 62%,transparent);mask:linear-gradient(#000 62%,transparent)}
+  .hero::after{display:none}
+  .hero .wrap{padding-block:0 120px;margin-top:-64px}
+  .logo{position:absolute;top:calc(-108vw + 84px);left:24px;margin:0;gap:10px}
+  .logo svg{width:40px;height:40px}.logo i{height:36px}.logo b{font-size:15px}.logo span{font-size:10.5px}
+  .hero__txt{text-align:center;margin-inline:auto}
+  .btn{width:100%;justify-content:center;text-align:center;padding:14px 76px 14px 28px;min-height:70px;font-size:14px}
+  .selo{justify-content:center}
+  .benef{margin-top:-84px}
+  .benef__card{grid-template-columns:repeat(2,1fr)}
+  .benef__i{padding:22px 12px;font-size:14.5px}
+  .benef__i:nth-child(3)::before{display:none}
+  .benef__i:nth-child(n+3){border-top:1px solid var(--line)}
+  .split,.consult .split,.painel__grid,.vinho__fim,.oferta__grid{grid-template-columns:minmax(0,1fr)}
+  .arco{max-width:380px;margin-inline:auto;width:100%}
+  .circ{max-width:300px;margin-inline:auto;width:100%}
+  .passo{grid-template-columns:44px minmax(0,1fr);gap:8px 14px}
+  .passo > div{grid-column:2}
+  .grade6,.grade3,.bonus__grid{grid-template-columns:minmax(0,1fr)}
+  .grade6{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .cardv{padding:22px 18px;font-size:15.5px}
+  .vinho{border-radius:30px 30px 0 0}
+  .cardb{grid-template-columns:minmax(0,1fr);gap:18px;padding:14px 14px 24px}
+  .cardb__img{aspect-ratio:16/10}
+  .cardb > div:last-child{padding-inline:8px}
+  .gar__grid{grid-template-columns:minmax(0,1fr);text-align:center}
+  .selo7{margin-inline:auto;width:220px}
+  .passos__lista{padding-left:34px}.trilho{left:4px}
+  .faixa{height:120px;margin-block:-30px}.faixa__trilho{font-size:17px;gap:18px}.faixa__f{padding:12px 0}
+  .oferta__txt{text-align:center}.oferta__txt .eyebrow{justify-content:center}
+  footer .wrap{justify-content:center;text-align:center}
+}
+@media (max-width:420px){.logo{top:calc(-108vw + 80px)}}
+</style>
+</head>
+<body>
+
+<!-- ====================== HERO ====================== -->
+<header class="hero">
+  <img class="hero__bg" src="assets/hero.jpg" alt="Mulher sorrindo, serena e confiante" onerror="this.remove()">
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M26 38c-6-4-9-10-9-16 0-4 4-9 9-12 5 3 9 8 9 12 0 6-3 12-9 16Z"/><path d="M26 38c-8 1-15-3-19-10 5-2 8-2 11-1"/><path d="M26 38c8 1 15-3 19-10-5-2-8-2-11-1"/><path d="M12 41c9 4 19 4 28 0"/></svg>
+      <i></i>
+      <div><b>Consultoria Online</b><span>Saúde Mental e Alta Performance Feminina</span></div>
+    </div>
+    <div class="hero__txt">
+      <h1 class="rv">Volte a ser aquela mulher linda, radiante, confiante e cheia de vida que você sente <em>tanta saudade de ser!</em></h1>
+      <p class="lead rv d1">Descubra como começar a recuperar sua autoestima, realizar seus sonhos e voltar a se sentir poderosa, elegante e dona de si enquanto continua cuidando das pessoas que ama.</p>
+      <p class="lead rv d2">Porque você merece muito mais do que dar conta de tudo. Você merece sentir prazer em viver!</p>
+      <div class="cta rv d3">
+        <a class="btn" href="#oferta"><span class="btn__t">Sim, quero voltar a brilhar!</span><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <div class="selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Garantia de reembolso de 7 dias</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="benef">
+  <div class="wrap">
+    <div class="benef__card rv">
+      <div class="benef__i"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 30c-5-3-7-8-7-12 0-3 3-7 7-9 4 2 7 6 7 9 0 4-2 9-7 12Z"/><path d="M20 30c-6 1-12-2-15-8 4-1 6-1 8 0"/><path d="M20 30c6 1 12-2 15-8-4-1-6-1-8 0"/><path d="M9 33c7 3 15 3 22 0"/></svg>Mais autoestima e autovalorização</div>
+      <div class="benef__i"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 33S6 25 6 15a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 10-14 18-14 18Z"/></svg>Equilíbrio emocional</div>
+      <div class="benef__i"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 31S3 25 3 16a5.5 5.5 0 0 1 11-1 5.5 5.5 0 0 1 11 1c0 9-11 15-11 15Z"/><path d="M27 10a5.5 5.5 0 0 1 10 6c0 7-7 12-10 14"/></svg>Relações mais leves e saudáveis</div>
+      <div class="benef__i"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 35V17"/><path d="M20 17c0-6 4-11 11-12 0 7-4 12-11 12Z"/><path d="M20 24c0-4-3-8-9-9 0 5 3 9 9 9Z"/><path d="M20 31c2-3 5-5 9-5"/></svg>Liberdade para realizar seus sonhos</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== IMAGINE ====================== -->
+<section class="imagine">
+  <img class="flor tr" src="assets/flores.jpg" alt="" onerror="this.remove()">
+  <div class="wrap">
+    <div class="split">
+      <div class="arco rv"><img src="assets/espelho.jpg" alt="Mulher sorrindo diante do espelho" loading="lazy" onerror="this.remove()"></div>
+      <div class="bloco">
+        <div class="eyebrow">Imagine</div>
+        <h2 class="h2 ze">Imagine como seria voltar a se apaixonar pela mulher que você vê <em>no espelho…</em></h2>
+        <ul class="linhas rv">
+          <li>Acordar pela manhã com vontade de se cuidar.</li>
+          <li>Escolher uma roupa maravilhosa.</li>
+          <li>Arrumar os cabelos.</li>
+          <li>Colocar seu perfume favorito.</li>
+          <li>Olhar no espelho e abrir aquele sorriso gostoso de quem pensa:</li>
+        </ul>
+        <p class="script fala rv">“Meu Deus… como é bom ser eu!”</p>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:clamp(56px,8vw,110px);align-items:start">
+      <div class="bloco rv">
+        <p class="lead">Imagine sair com as amigas, rir até a barriga doer, aproveitar um jantar especial e voltar para casa com o coração leve.</p>
+        <div class="tags"><span>Sem culpa.</span><span>Sem precisar justificar sua felicidade.</span></div>
+        <p>Imagine ter coragem para dizer NÃO quando precisar, expressar seus desejos e reservar momentos para aquilo que faz seus olhos brilharem.</p>
+      </div>
+      <div class="bloco rv d1">
+        <div class="tags" style="margin-top:0"><span>Voltar a viajar.</span><span>Dançar.</span><span>Fazer planos.</span><span>Conquistar seus objetivos.</span></div>
+        <p>Sentir-se bonita, sensual, magnética e cheia de energia.</p>
+        <p class="script" style="font-size:clamp(28px,3.4vw,40px);margin-top:18px">Uma mulher que ama sua família, mas também ama a própria vida!</p>
+        <p style="margin-top:18px;font-weight:700;color:var(--plum)">E sabe o que é mais bonito?</p>
+      </div>
+    </div>
+
+    <p class="fill" data-fill>Você não precisa escolher entre cuidar das pessoas que ama e cuidar de si mesma. Você merece viver os dois.</p>
+  </div>
+</section>
+
+<!-- ====================== DESCOBERTA ====================== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="painel">
+      <svg class="ramo" style="top:18px;right:18px" viewBox="0 0 120 150" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M12 146C40 110 70 60 108 8"/><path d="M38 108c-14-2-24-12-26-26 14 2 24 12 26 26Z"/><path d="M56 82c-14-4-22-16-22-30 13 5 22 16 22 30Z"/><path d="M52 90c12-10 28-10 40-2-12 10-28 10-40 2Z"/><path d="M74 56c-10-8-14-20-10-34 11 8 14 21 10 34Z"/><path d="M72 62c12-8 26-6 36 4-12 7-26 6-36-4Z"/><path d="M92 30c8-8 18-10 26-6-6 9-16 12-26 6Z"/></svg>
+      <div class="painel__grid">
+        <div>
+          <div class="eyebrow">Uma descoberta importante</div>
+          <h2 class="h2 ze">A mulher que você deseja ser não precisa ficar apenas na <em>sua imaginação</em></h2>
+          <p class="rv" style="margin-top:24px">Durante muito tempo, muitas mulheres aprenderam que ser uma boa mãe, esposa ou profissional significava colocar suas próprias necessidades em último lugar.</p>
+          <p class="rv" style="margin-top:14px;font-weight:700;color:var(--plum)">Mas existe uma descoberta importante:</p>
+          <p class="script destaque rv">O amor que você oferece à sua família não precisa custar a sua felicidade.</p>
+          <p class="rv">E é justamente esse equilíbrio que quero ajudar você a construir.</p>
+        </div>
+        <ul class="pode">
+          <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20S3 15 3 9a4.5 4.5 0 0 1 9-1 4.5 4.5 0 0 1 9 1c0 6-9 11-9 11Z"/></svg>Você pode ser uma mãe carinhosa e ter seus próprios sonhos.</li>
+          <li class="rv d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.700 19.400l1.200-6L3.400 9.300l6-.7Z"/></svg>Pode construir um relacionamento amoroso e preservar sua individualidade.</li>
+          <li class="rv d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.500M12 19.500V22M2 12h2.500M19.500 12H22M4.900 4.900l1.800 1.800M17.300 17.300l1.800 1.800M4.900 19.100l1.800-1.800M17.300 6.700l1.800-1.800"/></svg>Pode ser dedicada ao trabalho e reservar momentos para descansar, se divertir e cuidar da aparência.</li>
+          <li class="fim rv d3">Pode ser tudo isso sem deixar de ser VOCÊ.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== CONSULTORIA ====================== -->
+<section class="consult" id="consultoria">
+  <img class="flor tl" src="assets/flores.jpg" alt="" onerror="this.remove()">
+  <div class="wrap">
+    <div class="split">
+      <div class="circ rv"><img src="assets/cha.jpg" alt="Flores e uma xícara sobre livros" loading="lazy" onerror="this.remove()"></div>
+      <div>
+        <div class="eyebrow">Apresento a</div>
+        <h2 class="h2 ze">Consultoria Online de Saúde Mental e Alta <em>Performance Feminina</em></h2>
+        <svg class="underline" viewBox="0 0 210 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 8C50 2 130 2 208 6"/></svg>
+        <p class="script rv" style="font-size:clamp(24px,2.6vw,31px);margin:22px 0 18px">Um caminho para fortalecer sua autoestima, desenvolver sua confiança e voltar a ocupar o lugar que merece na própria vida.</p>
+        <div class="bloco rv">
+          <p>Por meio de sessões de terapia online, você terá um espaço de acolhimento, escuta e desenvolvimento emocional dedicado a você.</p>
+          <p>Durante nossos encontros, vamos trabalhar os pensamentos e padrões emocionais que influenciam suas escolhas, seus relacionamentos e a maneira como você se enxerga.</p>
+          <p>Para que você possa construir uma vida com mais autonomia, leveza, confiança e realização pessoal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="passos">
+      <h3 class="passos__h ze">O que vamos <em>desenvolver juntas?</em></h3>
+      <div class="passos__lista" data-trilho>
+      <span class="trilho" aria-hidden="true"><i></i><b><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20S3 15 3 9a4.500 4.500 0 0 1 9-1 4.500 4.500 0 0 1 9 1c0 6-9 11-9 11Z"/></svg></b></span>
+      <div class="passo rv"><span class="passo__n">01 /</span><h3>Uma autoestima que faz você se admirar</h3><div><p>Vamos trabalhar sua relação consigo mesma, para que você reconheça suas qualidades, valorize suas conquistas e volte a sentir prazer em cuidar de si.</p></div></div>
+      <div class="passo rv"><span class="passo__n">02 /</span><h3>Liberdade para aproveitar a vida</h3><div><p>Vamos olhar para os pensamentos que provocam culpa quando você descansa, sai com as amigas ou dedica tempo aos seus desejos.</p><p><b>Porque sua felicidade também merece espaço na agenda.</b></p></div></div>
+      <div class="passo rv"><span class="passo__n">03 /</span><h3>Confiança para expressar o que você deseja</h3><div><p>Vamos trabalhar sua capacidade de reconhecer necessidades, comunicar limites e fazer escolhas com mais segurança.</p></div></div>
+      <div class="passo rv"><span class="passo__n">04 /</span><h3>Mais equilíbrio emocional no dia a dia</h3><div><p>Vamos desenvolver maneiras de lidar com a autocobrança, as responsabilidades e os desafios sem esquecer do seu próprio bem-estar.</p></div></div>
+      <div class="passo rv"><span class="passo__n">05 /</span><h3>Coragem para realizar seus sonhos</h3><div><p>Vamos resgatar objetivos que ficaram esquecidos e construir caminhos para que você volte a investir no que dá sentido à sua vida.</p></div></div>
+      </div>
+      <p class="script manifesto rv">Porque você não nasceu apenas para participar das conquistas de quem ama. Você também merece celebrar as suas!</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== TRANSFORMAÇÃO ====================== -->
+<section class="vinho">
+  <div class="luzes" aria-hidden="true"></div>
+  <div class="divisor" aria-hidden="true">
+    <svg class="divisor__curva" viewBox="0 0 130 38"><path d="M0 0C28 0 34 38 65 38C96 38 102 0 130 0Z"/></svg>
+    <span class="divisor__selo"><svg viewBox="0 0 5.500 7.500" width="6"><path d="M2.750 0V7.500M2.750 7.500L0 4.750M2.750 7.500L5.500 4.750" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+  </div>
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow c">Sua nova fase</div>
+      <h2 class="h2 ze">Imagine a mulher que você pode começar <em>a se tornar…</em></h2>
+    </div>
+    <div class="grade6">
+      <div class="cardv rv"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="7"/><path d="M20 4v4M20 32v4M4 20h4M32 20h4M8.700 8.700l2.800 2.800M28.500 28.500l2.800 2.800M8.700 31.300l2.800-2.800M28.500 11.500l2.800-2.800"/></svg>Uma mulher que acorda com vontade de viver o dia.</div>
+      <div class="cardv rv d1"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14h24l-12 20Z"/><path d="M8 14l5-7h14l5 7M13 7l7 7 7-7M14 14l6 20 6-20"/></svg>Que se arruma porque sente prazer.</div>
+      <div class="cardv rv d2"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 30c-5-3-7-8-7-12 0-3 3-7 7-9 4 2 7 6 7 9 0 4-2 9-7 12Z"/><path d="M20 30c-6 1-12-2-15-8 4-1 6-1 8 0"/><path d="M20 30c6 1 12-2 15-8-4-1-6-1-8 0"/><path d="M9 33c7 3 15 3 22 0"/></svg>Que usa seu perfume favorito mesmo sem uma ocasião especial.</div>
+      <div class="cardv rv"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v20"/><path d="M20 20c-3-8-9-12-14-11-1 6 2 12 7 13-3 2-4 6-2 9 4 0 8-4 9-11Z"/><path d="M20 20c3-8 9-12 14-11 1 6-2 12-7 13 3 2 4 6 2 9-4 0-8-4-9-11Z"/><path d="M17 7l3 5 3-5"/></svg>Que sai com as amigas e se diverte sem culpa.</div>
+      <div class="cardv rv d1"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5l4.300 9.400 10.200 1.200-7.600 7 2.100 10.100L20 27.600l-9 5.100 2.100-10.100-7.600-7 10.200-1.200Z"/></svg>Que sabe dizer NÃO com respeito e dizer SIM aos próprios sonhos.</div>
+      <div class="cardv rv d2"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 33S6 25 6 15a7 7 0 0 1 14-2 7 7 0 0 1 14 2c0 10-14 18-14 18Z"/></svg>Que cuida da família com amor, mas também reserva tempo para si.</div>
+    </div>
+    <div class="vinho__fim">
+      <p class="script rv">Uma mulher linda, elegante, radiante, sensual, confiante e dona de si!</p>
+      <div class="bloco rv d1">
+        <p>E talvez a conquista mais especial não seja voltar a ser exatamente quem você era antes.</p>
+        <p>Mas descobrir uma versão sua ainda mais consciente do próprio valor, dos próprios desejos e da vida que deseja construir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PARA VOCÊ ====================== -->
+<section class="para">
+  <div class="wrap center">
+    <div class="eyebrow c">Para você</div>
+    <h2 class="h2 ze">Esse espaço é para você <em>que deseja…</em></h2>
+    <div class="grade3">
+      <div class="cardp rv"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18c-3-2-4.500-5-4.500-7.500 0-2 2-4.500 4.500-6 2.500 1.500 4.500 4 4.500 6 0 2.500-1.500 5.500-4.500 7.500Z"/><path d="M12 18c-4 .5-7.500-1.500-9-5M12 18c4 .5 7.500-1.500 9-5"/></svg></div>Recuperar o prazer de cuidar de si e da própria aparência.</div>
+      <div class="cardp rv d1"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14l-7 12Z"/><path d="M5 9l3-4h8l3 4M8 5l4 4 4-4"/></svg></div>Fortalecer a autoestima e a confiança.</div>
+      <div class="cardp rv d2"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.500M12 19.500V22M2 12h2.500M19.500 12H22M4.900 4.900l1.800 1.800M17.300 17.300l1.800 1.800M4.900 19.100l1.800-1.800M17.300 6.700l1.800-1.800"/></svg></div>Aproveitar momentos de descanso e lazer com mais tranquilidade.</div>
+      <div class="cardp rv"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20S3 15 3 9a4.500 4.500 0 0 1 9-1 4.500 4.500 0 0 1 9 1c0 6-9 11-9 11Z"/></svg></div>Construir limites saudáveis nos relacionamentos.</div>
+      <div class="cardp rv d1"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.600 5.600 6 .7-4.500 4.100 1.200 6L12 16.400l-5.300 3 1.200-6L3.400 9.300l6-.7Z"/></svg></div>Voltar a fazer planos e realizar sonhos.</div>
+      <div class="cardp rv d2"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4 2.500-7 7-8 0 4.500-2.500 8-7 8Z"/><path d="M12 16c0-2.500-2-5-6-5.500 0 3 2 5.500 6 5.500Z"/></svg></div>Sentir-se valorizada, realizada e protagonista da própria história.</div>
+    </div>
+    <p class="lead rv" style="max-width:620px;margin:44px auto 0">Se você deseja uma vida com mais brilho, leveza e liberdade, este pode ser o seu primeiro passo.</p>
+    <div class="cta rv">
+      <a class="btn" href="#oferta"><span class="btn__t">Quero começar minha nova fase!</span><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <div class="selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Garantia de reembolso de 7 dias</div>
+    </div>
+  </div>
+</section>
+
+<div class="faixa" aria-hidden="true">
+  <div class="faixa__f f1"><div class="faixa__trilho"></div></div>
+  <div class="faixa__f f2"><div class="faixa__trilho"></div></div>
+</div>
+
+<!-- ====================== OFERTA ====================== -->
+<section class="oferta" id="oferta">
+  <img class="flor br" src="assets/flores.jpg" alt="" onerror="this.remove()">
+  <div class="wrap">
+    <div class="oferta__grid">
+      <div class="oferta__txt">
+        <div class="eyebrow">Investimento</div>
+        <h2 class="h2 ze">Sua felicidade também merece <em>um investimento</em></h2>
+        <div class="bloco rv" style="margin-top:24px">
+          <p>Pense em todo o amor, tempo e dedicação que você oferece às pessoas importantes da sua vida.</p>
+          <p>Agora imagine reservar um espaço para desenvolver sua autoestima, cuidar das suas emoções e fortalecer sua relação consigo mesma.</p>
+        </div>
+        <p class="script rv" style="font-size:clamp(26px,3vw,36px);margin-top:22px">Porque investir em você também é investir na qualidade da vida que deseja construir.</p>
+      </div>
+      <div class="preco rv d1">
+        <span class="tracado" aria-hidden="true"></span>
+        <span class="preco__tag">Investimento especial</span>
+        <p class="preco__nome">Consultoria Online de Saúde Mental e Alta Performance Feminina</p>
+        <p class="preco__cond">Condição de inscrição</p>
+        <p class="preco__valor"><span>12x de R$</span><b>20,37</b></p>
+        <p class="preco__avista">ou R$ 197 à vista</p>
+        <!-- TROQUE O href PELO LINK DO CHECKOUT -->
+        <a class="btn" data-checkout href="#oferta"><span class="btn__t">Sim, quero investir em mim!</span><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <div class="selo" style="justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Garantia de reembolso de 7 dias</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== BÔNUS ====================== -->
+<section class="bonus">
+  <div class="wrap center">
+    <div class="eyebrow c">Bônus exclusivos</div>
+    <h2 class="h2 ze">E para complementar sua jornada, você recebe <em>dois bônus</em></h2>
+    <div class="bonus__grid">
+      <div class="cardb rv">
+        <div class="cardb__img"><img src="assets/bonus1.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div><span class="pill">Bônus 1</span><h3>Mulher Inabalável</h3><h4>Como Lidar com Situações Desafiadoras</h4><p>Um conteúdo complementar para apoiar você no desenvolvimento de recursos emocionais para enfrentar os desafios da vida.</p></div>
+      </div>
+      <div class="cardb rv d1">
+        <div class="cardb__img"><img src="assets/bonus2.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div><span class="pill">Bônus 2</span><h3>Blindagem Emocional</h3><h4>Como Proteger Sua Paz e Dizer Não Sem Culpa</h4><p>Um material para ajudar você a reconhecer seus limites e cultivar relações mais equilibradas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== GARANTIA ====================== -->
+<section class="gar">
+  <div class="wrap">
+    <div class="gar__grid">
+      <div class="selo7 rv">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Garantia de 7 dias">
+          <defs>
+            <linearGradient id="gd" gradientUnits="userSpaceOnUse" x1="30" y1="20" x2="270" y2="280"><stop offset="0" stop-color="#f8e9c0"/><stop offset=".3" stop-color="#D8B36A"/><stop offset=".55" stop-color="#f3dfae"/><stop offset=".8" stop-color="#c79a4c"/><stop offset="1" stop-color="#9b7230"/></linearGradient>
+            <radialGradient id="pl" gradientUnits="userSpaceOnUse" cx="108" cy="92" r="200"><stop offset="0" stop-color="#a04565"/><stop offset=".5" stop-color="#6f2744"/><stop offset="1" stop-color="#451829"/></radialGradient>
+            <linearGradient id="bl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".34"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <circle id="gota" cx="150" cy="21" r="11.500"/>
+            <path id="anel" d="M62 150a88 88 0 1 1 176 0a88 88 0 1 1-176 0"/>
+            <clipPath id="disco"><circle cx="150" cy="150" r="113"/></clipPath>
+          </defs>
+          <g id="fora" fill="url(#gd)"><circle cx="150" cy="150" r="127"/><use href="#gota" transform="rotate(0 150 150)"/><use href="#gota" transform="rotate(15 150 150)"/><use href="#gota" transform="rotate(30 150 150)"/><use href="#gota" transform="rotate(45 150 150)"/><use href="#gota" transform="rotate(60 150 150)"/><use href="#gota" transform="rotate(75 150 150)"/><use href="#gota" transform="rotate(90 150 150)"/><use href="#gota" transform="rotate(105 150 150)"/><use href="#gota" transform="rotate(120 150 150)"/><use href="#gota" transform="rotate(135 150 150)"/><use href="#gota" transform="rotate(150 150 150)"/><use href="#gota" transform="rotate(165 150 150)"/><use href="#gota" transform="rotate(180 150 150)"/><use href="#gota" transform="rotate(195 150 150)"/><use href="#gota" transform="rotate(210 150 150)"/><use href="#gota" transform="rotate(225 150 150)"/><use href="#gota" transform="rotate(240 150 150)"/><use href="#gota" transform="rotate(255 150 150)"/><use href="#gota" transform="rotate(270 150 150)"/><use href="#gota" transform="rotate(285 150 150)"/><use href="#gota" transform="rotate(300 150 150)"/><use href="#gota" transform="rotate(315 150 150)"/><use href="#gota" transform="rotate(330 150 150)"/><use href="#gota" transform="rotate(345 150 150)"/></g>
+          <circle cx="150" cy="150" r="113" fill="url(#pl)"/>
+          <circle cx="150" cy="150" r="107" fill="none" stroke="url(#gd)" stroke-width="1.200"/>
+          <g id="dentro"><text font-family="Montserrat,sans-serif" font-weight="700" font-size="14" fill="#f6e4b6"><textPath href="#anel" textLength="548" lengthAdjust="spacing">GARANTIA DE 7 DIAS  •  GARANTIA DE 7 DIAS  •  </textPath></text></g>
+          <circle cx="150" cy="150" r="70" fill="none" stroke="url(#gd)" stroke-width="2" stroke-linecap="round" stroke-dasharray=".1 7.230"/>
+          <g class="num">
+            <text x="150" y="172" font-family="Playfair Display,serif" font-weight="700" font-size="92" fill="url(#gd)" text-anchor="middle">7</text>
+            <text x="152" y="198" font-family="Montserrat,sans-serif" font-weight="700" font-size="12" letter-spacing="6" fill="#f6e4b6" text-anchor="middle">DIAS</text>
+          </g>
+          <g clip-path="url(#disco)"><rect class="brilho" x="0" y="20" width="70" height="260" fill="url(#bl)"/></g>
+        </svg>
+      </div>
+      <div>
+        <div class="eyebrow">Garantia</div>
+        <h2 class="h2 ze">Com a segurança de uma garantia <em>de 7 dias</em></h2>
+        <p class="rv">Sua inscrição conta com garantia de reembolso de 7 dias, conforme os termos apresentados na contratação.</p>
+        <p class="obs rv">O acompanhamento é individualizado, e cada mulher pode vivenciar seu processo de maneira diferente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ENCERRAMENTO ====================== -->
+<section class="fim">
+  <img class="flor tl" src="assets/flores.jpg" alt="" onerror="this.remove()">
+  <img class="flor br" src="assets/flores.jpg" alt="" onerror="this.remove()">
+  <div class="wrap">
+    <div class="fim__col">
+      <h2 class="h2 ze">Você já fez tanta coisa por quem ama…</h2>
+      <h2 class="h2 ze"><em>Agora imagine tudo o que ainda pode fazer por você.</em></h2>
+      <ul class="poder rv">
+        <li>As viagens que pode planejar.</li>
+        <li>Os sonhos que pode realizar.</li>
+        <li>Os momentos que pode viver.</li>
+        <li>As gargalhadas que pode dar.</li>
+        <li>Os vestidos maravilhosos que pode usar.</li>
+        <li>As conquistas que pode celebrar.</li>
+      </ul>
+      <p class="rv">E, principalmente, a satisfação de olhar no espelho e reconhecer uma mulher que se valoriza, se respeita e sente orgulho da própria história.</p>
+      <p class="script papeis rv">Você não precisa deixar de ser uma mãe amorosa. Uma esposa dedicada. Uma profissional competente.</p>
+      <p class="rv">Você só precisa lembrar que, antes de todos esses papéis, existe uma mulher com desejos, sonhos e uma vida inteira para viver.</p>
+      <p class="rv" style="font-weight:700;color:var(--plum)">E essa mulher merece sua atenção.</p>
+      <p class="script amor rv">Seu carinho. Seu amor.</p>
+      <p class="rv" style="font-weight:700;color:var(--plum)">Porque a sua felicidade também importa.</p>
+      <h2 class="fim__h ze">Chegou a hora de voltar a brilhar, sonhar e ser dona <em>da própria vida!</em></h2>
+      <svg class="coracao" viewBox="0 0 120 26" fill="none" stroke="currentColor" stroke-width="1.300" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c16-5 30-5 46 0M118 12c-16-5-30-5-46 0"/><path d="M60 23s-9-5-9-11a4.500 4.500 0 0 1 9-1 4.500 4.500 0 0 1 9 1c0 6-9 11-9 11Z"/></svg>
+      <div class="cta rv">
+        <!-- TROQUE O href PELO LINK DO CHECKOUT -->
+        <a class="btn" data-checkout href="#oferta"><span class="btn__t">Quero voltar a ser dona de mim!</span><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      </div>
+      <p class="fim__preco">12x de R$ 20,37 ou R$ 197 à vista</p>
+      <p class="fim__obs">As sessões oferecem um processo de acompanhamento emocional, sem garantia de resultados específicos.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© Consultoria Online de Saúde Mental e Alta Performance Feminina</span>
+    <a class="credito" href="https://instagram.com/zeph.rafa" target="_blank" rel="noopener">Feito por @zeph.rafa</a>
+  </div>
+</footer>
+
+<script>
+// Link do checkout: cole aqui e todos os botões de compra passam a usar.
+const CHECKOUT_URL = "";
+if (CHECKOUT_URL) document.querySelectorAll('[data-checkout]').forEach(a => a.href = CHECKOUT_URL);
+
+// Sem viúvas: junta as duas últimas palavras de cada bloco
+document.querySelectorAll('h1,h2,h3,h4,p,li,.btn__t').forEach(el => {
+  const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let last = null, n;
+  while ((n = w.nextNode())) if (n.nodeValue.trim()) last = n;
+  if (last) { const t = last.nodeValue.replace(/\s+$/, ''); const i = t.lastIndexOf(' ');
+    if (i > 0 && t.split(' ').length > 3 && t.length - t.lastIndexOf(' ', i - 1) <= 16) last.nodeValue = t.slice(0, i) + ' ' + t.slice(i + 1); }
+});
+
+// Texto preenchendo conforme o scroll
+document.querySelectorAll('[data-fill]').forEach(el => {
+  el.innerHTML = el.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' ');
+  const ws = [...el.querySelectorAll('.w')];
+  const upd = () => { const r = el.getBoundingClientRect(), vh = innerHeight;
+    const p = Math.min(1, Math.max(0, (vh * .88 - r.top) / (vh * .5)));
+    const n = Math.round(p * ws.length); ws.forEach((w, i) => w.classList.toggle('on', i < n)); };
+  addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+});
+
+// Faixa animada: preenche as duas faixas com o nome do programa
+const flor = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20S3 15 3 9a4.500 4.500 0 0 1 9-1 4.500 4.500 0 0 1 9 1c0 6-9 11-9 11Z"/></svg>';
+const itens = ['Consultoria Online', 'Saúde Mental', 'Alta Performance Feminina'].map(t => `<span>${t}</span>${flor}`).join('');
+document.querySelectorAll('.faixa__trilho').forEach(t => t.innerHTML = itens.repeat(12));
+
+// Linha do tempo que se move no scroll
+document.querySelectorAll('[data-trilho]').forEach(el => {
+  const upd = () => { const r = el.getBoundingClientRect();
+    el.style.setProperty('--p', Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height)).toFixed(4)); };
+  addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+});
+
+// Texto revelando de entrada: quebra cada título nas linhas reais da tela
+function quebraLinhas(h) {
+  if (!h.dataset.orig) h.dataset.orig = h.innerHTML;
+  h.innerHTML = h.dataset.orig;
+  const tw = document.createTreeWalker(h, NodeFilter.SHOW_TEXT), nos = []; let n;
+  while ((n = tw.nextNode())) nos.push(n);
+  nos.forEach(t => { const em = !!t.parentElement.closest('em'), f = document.createDocumentFragment();
+    t.nodeValue.split(/( +)/).forEach(p => { if (!p) return;
+      if (/^ +$/.test(p)) return f.appendChild(document.createTextNode(' '));
+      const sp = document.createElement('span'); sp.className = 'zw'; sp.textContent = p; if (em) sp.dataset.em = 1; f.appendChild(sp); });
+    t.replaceWith(f); });
+  const linhas = []; let topo = null;
+  h.querySelectorAll('.zw').forEach(w => { const y = w.getBoundingClientRect().top;
+    if (topo === null || Math.abs(y - topo) > 6) { linhas.push([]); topo = y; } linhas[linhas.length - 1].push(w); });
+  h.classList.toggle('zc', getComputedStyle(h).textAlign === 'center');
+  h.innerHTML = '';
+  linhas.forEach((l, i) => { const s = document.createElement('span'); s.className = 'zeph-entrada__linha'; s.style.setProperty('--linha', i);
+    let html = '', aberto = false;
+    l.forEach((w, k) => { const e = !!w.dataset.em;
+      if (e && !aberto) { html += '<em>'; aberto = true; }
+      if (!e && aberto) { html = html.replace(/ $/, '') + '</em> '; aberto = false; }
+      html += w.textContent.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (k < l.length - 1 ? ' ' : ''); });
+    if (aberto) html += '</em>';
+    s.innerHTML = html; h.appendChild(s); });
+}
+
+// Entradas
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) {
+  e.target.classList.add(e.target.classList.contains('ze') ? 'is-visivel' : 'in'); io.unobserve(e.target); } }),
+  { rootMargin: `0px 0px -${Math.round(innerHeight * .16)}px 0px` });
+const titulos = [...document.querySelectorAll('.ze')];
+const semMovimento = matchMedia('(prefers-reduced-motion: reduce)').matches;
+(document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+  titulos.forEach(h => { quebraLinhas(h); if (!semMovimento) h.classList.add('is-pronto'); io.observe(h); });
+  let larg = innerWidth;
+  addEventListener('resize', () => { if (innerWidth === larg) return; larg = innerWidth; titulos.forEach(quebraLinhas); });
+});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+// segurança: se o observer não disparar (aba em segundo plano), revela o que já está na tela
+setTimeout(() => document.querySelectorAll('.rv:not(.in),.ze:not(.is-visivel)').forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) el.classList.add(el.classList.contains('ze') ? 'is-visivel' : 'in'); }), 1500);
+</script>
+</body>
+</html>
