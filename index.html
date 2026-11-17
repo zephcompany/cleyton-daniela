@@ -83,17 +83,25 @@ html,body{max-width:100%;overflow-x:clip}
 .wrap{position:relative;z-index:1}
 
 /* ============ HERO ============ */
-.hero{padding:0;min-height:min(820px,100svh);display:flex;align-items:center;background:radial-gradient(90% 120% at 0% 0%,#fff3ee 0%,var(--blush) 55%,#f1d5d3 100%)}
-.hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(248,231,229,.96) 0%,rgba(248,231,229,.86) 34%,rgba(248,231,229,0) 62%)}
+.hero{padding:0;min-height:min(860px,100svh);display:flex;align-items:center;overflow:hidden;background:radial-gradient(70% 90% at 0% 0%,#fff6f2 0%,rgba(255,246,242,0) 60%),radial-gradient(60% 80% at 100% 30%,#f3d3d2 0%,rgba(243,211,210,0) 70%),var(--blush)}
+.hero .flor.tr{width:clamp(200px,24vw,380px);top:-20px;right:-40px}
 .hero .wrap{width:100%;z-index:2;padding-block:44px 150px}
+.hero__grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);grid-template-areas:"h vsl" "rest vsl";column-gap:clamp(36px,5vw,72px);align-items:center}
+.hero__h{grid-area:h;align-self:end}
+.hero__rest{grid-area:rest;align-self:start}
+.hero__vsl{grid-area:vsl;position:relative}
+.vsl{position:relative;border-radius:22px;overflow:hidden;background:#2a1520;box-shadow:0 0 0 1px var(--gold),0 0 0 9px var(--champ),0 0 0 10px rgba(216,179,106,.55),0 50px 80px -40px rgba(101,36,61,.6)}
+.vsl vturb-smartplayer{display:block;width:100%}
+.hero__vsl::before{content:"";position:absolute;inset:-14% -10%;z-index:-1;background:radial-gradient(closest-side,rgba(196,106,131,.28),rgba(196,106,131,0));pointer-events:none}
+.vsl__tag{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;font:700 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--burnt)}
+.vsl__tag i{width:8px;height:8px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 0 rgba(196,106,131,.6);animation:aoVivo 1.8s infinite}
+@keyframes aoVivo{70%{box-shadow:0 0 0 9px rgba(196,106,131,0)}100%{box-shadow:0 0 0 0 rgba(196,106,131,0)}}
 .logo{display:flex;align-items:center;gap:14px;margin-bottom:clamp(36px,6vw,64px)}
 .logo svg{width:52px;height:52px;color:var(--burnt);flex:none}
 .logo b{display:block;font:600 19px/1.1 var(--serif);color:var(--plum);letter-spacing:-.01em}
 .logo span{display:block;font:italic 500 13px/1.3 var(--sans);color:var(--plum);margin-top:3px}
 .logo i{width:1px;height:46px;background:var(--plum);opacity:.35}
-.hero__txt{max-width:610px}
-.hero h1{font-size:clamp(33px,4.5vw,58px);line-height:1.04}
+.hero h1{font-size:clamp(32px,3.7vw,54px);line-height:1.04}
 .hero .lead{margin-top:22px;max-width:540px}
 .hero .lead + .lead{margin-top:14px;font-weight:500;color:var(--plum)}
 
@@ -147,7 +155,7 @@ html,body{max-width:100%;overflow-x:clip}
 .vinho{background:radial-gradient(120% 130% at 0% 0%,#a64d69 0%,var(--wine) 45%,#6f2843 100%);color:#fbe9ea;border-radius:44px 44px 0 0}
 .vinho h2{color:#fff}.vinho h2 em{color:#f3d9a4}
 .vinho .eyebrow{color:#f3d9a4}
-.divisor{position:absolute;left:0;right:0;top:0;height:0;z-index:3}
+.divisor{position:absolute;left:50%;width:0;top:0;height:0;z-index:3}
 .divisor__curva{position:absolute;left:50%;top:-1px;translate:-50% 0;width:130px;height:38px;fill:#fbeeec}
 .divisor__selo{position:absolute;left:50%;top:9px;translate:-50% -50%;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--btn-grad);box-shadow:0 0 0 5px rgba(196,106,131,.16),0 0 0 1px var(--gold) inset,0 8px 22px rgba(101,36,61,.35)}
 @media (min-width:900px){.divisor{scale:1.5}}
@@ -265,13 +273,16 @@ footer a.credito{padding:8px 16px;border-radius:999px;border:1px solid rgba(255,
 /* ============ MOBILE ============ */
 @media (max-width:900px){
   body{font-size:16px}
-  .hero{display:block;min-height:0;background:var(--blush)}
-  .hero__bg{position:relative;inset:auto;height:108vw;max-height:520px;object-position:78% 20%;-webkit-mask:linear-gradient(#000 62%,transparent);mask:linear-gradient(#000 62%,transparent)}
-  .hero::after{display:none}
-  .hero .wrap{padding-block:0 120px;margin-top:-64px}
-  .logo{position:absolute;top:calc(-108vw + 84px);left:24px;margin:0;gap:10px}
+  .hero{display:block;min-height:0}
+  .hero .wrap{padding-block:28px 120px}
+  .logo{justify-content:center;margin-bottom:30px;gap:10px}
   .logo svg{width:40px;height:40px}.logo i{height:36px}.logo b{font-size:15px}.logo span{font-size:10.5px}
-  .hero__txt{text-align:center;margin-inline:auto}
+  .hero__grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"h" "vsl" "rest";row-gap:30px;text-align:center}
+  .hero .lead{margin-inline:auto}
+  .hero .lead:first-child{margin-top:0}
+  .vsl{border-radius:16px;box-shadow:0 0 0 1px var(--gold),0 0 0 6px var(--champ),0 0 0 7px rgba(216,179,106,.55),0 34px 60px -34px rgba(101,36,61,.6)}
+  .vsl__tag{margin-top:16px;font-size:11px}
+  .hero .flor.tr{width:150px;top:-14px;right:-30px}
   .btn{width:100%;justify-content:center;text-align:center;padding:14px 76px 14px 28px;min-height:70px;font-size:14px}
   .selo{justify-content:center}
   .benef{margin-top:-84px}
@@ -298,31 +309,42 @@ footer a.credito{padding:8px 16px;border-radius:999px;border:1px solid rgba(255,
   .oferta__txt{text-align:center}.oferta__txt .eyebrow{justify-content:center}
   footer .wrap{justify-content:center;text-align:center}
 }
-@media (max-width:420px){.logo{top:calc(-108vw + 80px)}}
 </style>
 </head>
 <body>
 
 <!-- ====================== HERO ====================== -->
 <header class="hero">
-  <img class="hero__bg" src="assets/hero.jpg" alt="Mulher sorrindo, serena e confiante" onerror="this.remove()">
+  <img class="flor tr" src="assets/flores.jpg" alt="" onerror="this.remove()">
   <div class="wrap">
     <div class="logo">
       <svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M26 38c-6-4-9-10-9-16 0-4 4-9 9-12 5 3 9 8 9 12 0 6-3 12-9 16Z"/><path d="M26 38c-8 1-15-3-19-10 5-2 8-2 11-1"/><path d="M26 38c8 1 15-3 19-10-5-2-8-2-11-1"/><path d="M12 41c9 4 19 4 28 0"/></svg>
       <i></i>
       <div><b>Consultoria Online</b><span>Saúde Mental e Alta Performance Feminina</span></div>
     </div>
-    <div class="hero__txt">
-      <h1 class="rv">Volte a ser aquela mulher linda, radiante, confiante e cheia de vida que você sente <em>tanta saudade de ser!</em></h1>
-      <p class="lead rv d1">Descubra como começar a recuperar sua autoestima, realizar seus sonhos e voltar a se sentir poderosa, elegante e dona de si enquanto continua cuidando das pessoas que ama.</p>
-      <p class="lead rv d2">Porque você merece muito mais do que dar conta de tudo. Você merece sentir prazer em viver!</p>
-      <div class="cta rv d3">
-        <a class="btn" href="#oferta"><span class="btn__t">Sim, quero voltar a brilhar!</span><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-        <div class="selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Garantia de reembolso de 7 dias</div>
+    <div class="hero__grid">
+      <div class="hero__h">
+        <h1 class="rv">Volte a ser aquela mulher linda, radiante, confiante e cheia de vida que você sente <em>tanta saudade de ser!</em></h1>
+      </div>
+      <div class="hero__vsl rv d1">
+        <!-- VSL (vturb) -->
+        <div class="vsl">
+          <vturb-smartplayer id="vid-6afc692fcc4ed3efbb584b35" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+        </div>
+        <p class="vsl__tag"><i></i>Assista com o som ligado</p>
+      </div>
+      <div class="hero__rest">
+        <p class="lead rv d2">Descubra como começar a recuperar sua autoestima, realizar seus sonhos e voltar a se sentir poderosa, elegante e dona de si enquanto continua cuidando das pessoas que ama.</p>
+        <p class="lead rv d2">Porque você merece muito mais do que dar conta de tudo. Você merece sentir prazer em viver!</p>
+        <div class="cta rv d3">
+          <a class="btn" href="#oferta"><span class="btn__t">Sim, quero voltar a brilhar!</span><span class="arw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <div class="selo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Garantia de reembolso de 7 dias</div>
+        </div>
       </div>
     </div>
   </div>
 </header>
+<script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/1afc7d96-aa50-4bfd-ac1d-afed416105b9/players/6afc692fcc4ed3efbb584b35/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
 
 <div class="benef">
   <div class="wrap">
